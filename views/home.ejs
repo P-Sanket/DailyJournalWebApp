@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+<h1>Home</h1>
+<p><%= homeStartingContent %></p>
+
+<% posts.forEach(post => { %>
+<div>
+    <h2><%= post.postTitle %></a></h2>
+    <% if (!post.postBody) { %>
+    <p>There is no content in this post</p>
+    <% } else if (post.postBody.length <= 100) { %>
+    <p> <%= post.postBody %> </p>
+    <% } else { %>
+    <p><%= post.postBody.slice(0, 100) + "..." %>
+        <span><a href="/posts/<%= post._id %>">Read More</a></span></p>
+    <% } %>
+</div>
+
+<% }) %>
+
+
+<%- include('partials/footer'); -%>
